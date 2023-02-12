@@ -6,6 +6,8 @@ import cn from 'classnames';
 import { Typography } from '@/shared/typography';
 import { NavigationMenu } from '@/widgets/navigationMenu';
 import styles from './App.module.css';
+import { About } from '@/widgets/about';
+import { Contacts } from '@/entities/contacts';
 
 type AppProps = {
   data: CVData | null;
@@ -21,10 +23,11 @@ const App: FC<AppProps> = ({ data }) => {
       <NavigationMenu contacts={data.contacts} className={styles.Menu} />
 
       <div className={styles.Content}>
-        <div className={styles.Heading}>
-          <h1 className={cn(styles.Name)}>{data.about.name}</h1>
-          <h2 className={styles.Profession}>{data.about.profession}</h2>
-        </div>
+        <About {...data.about} className={styles.Section} />
+      </div>
+
+      <div className={styles.Footer}>
+        <Contacts contacts={data.contacts} className={styles.FooterContent} />
       </div>
     </div>
   );

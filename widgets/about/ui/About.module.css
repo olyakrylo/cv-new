@@ -1,0 +1,64 @@
+.Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.Heading {
+  display: grid;
+  grid-gap: 16px;
+
+  letter-spacing: 0.01em;
+  font-weight: 800;
+  text-align: right;
+}
+
+.Name {
+  font-size: 96px;
+}
+
+.Profession {
+  font-size: 36px;
+}
+
+.Text {
+  align-self: flex-end;
+  text-align: right;
+  background-color: var(--color-bg);
+  padding: 16px 16px 16px 64px;
+  max-width: 800px;
+  font-weight: 300;
+  font-size: 20px;
+  letter-spacing: 0.01em;
+}
+
+@media screen and (max-width: 1024px) {
+  .Text {
+    align-self: flex-start;
+    text-align: left;
+    padding: 16px 64px 16px 16px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .Heading {
+    text-align: center;
+  }
+
+  .Name {
+    font-size: 56px;
+  }
+
+  .Profession {
+    font-size: 20px;
+  }
+
+  .Text {
+    margin-left: -24px;
+    margin-right: -24px;
+    padding: 24px;
+    text-align: center;
+    font-size: 16px;
+  }
+}

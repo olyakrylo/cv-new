@@ -1,48 +1,45 @@
-import { FC, useCallback } from 'react';
+import { FC, useCallback, useState } from 'react';
 import { NavigationMenuProps } from '@/widgets/navigationMenu/type';
 import cn from 'classnames';
 
 import styles from './NavigationMenu.module.css';
-import { NavigationTabs, ContactIcons } from '../model';
-import { CVData } from '@/shared/cvData';
+import { NavigationTabs } from '../model';
+import BurgerIcon from '@/shared/icons/burger.svg';
 
 import Image from 'next/image';
+import { Contacts } from '@/entities/contacts';
 
 export const NavigationMenu: FC<NavigationMenuProps> = ({
   className,
   contacts,
 }) => {
-  const getContactContent = useCallback(
-    (contact: CVData['contacts'][number]) => {
-      if (contact.link) {
-        return <a href={contact.link}>{contact.text}</a>;
-      }
-      return <span>{contact.text}</span>;
-    },
-    []
-  );
+  const [expanded, setExpanded] = useState(false);
+
+  const toggle = useCallback(() => {
+    setExpanded(!expanded);
+  }, [expanded]);
 
   return (
-    <div className={cn(styles.Container, [className])}>
+    <div className={cn(styles.Container, [className])} aria-expanded={expanded}>
       <div className={styles.Menu}>
         {NavigationTabs.map((tab) => (
-          <button className={styles.Tab} key={tab.path}>
+          <button
+            className={cn(styles.Tab, {
+              [styles.Tab_active]: tab.path === 'about',
+            })}
+            key={tab.path}
+          >
             {tab.name}
           </button>
         ))}
+
+        <button className={styles.Burger} onClick={toggle}>
+          <Image src={BurgerIcon} alt={''} />
+        </button>
       </div>
 
       <div className={styles.Contacts}>
-        {contacts.map((contact, i) => (
-          <div key={i} className={styles.ContactsRow}>
-            <Image
-              className={styles.ContactIcon}
-              src={ContactIcons[contact.type]}
-              alt={''}
-            />
-            {getContactContent(contact)}
-          </div>
-        ))}
+        <Contacts contacts={contacts} />
       </div>
     </div>
   );

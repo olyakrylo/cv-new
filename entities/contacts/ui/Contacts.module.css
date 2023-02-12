@@ -1,0 +1,12 @@
+.Container {
+  display: grid;
+  gap: 16px;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.Row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}

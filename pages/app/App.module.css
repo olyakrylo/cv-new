@@ -23,62 +23,67 @@
 
 .Content {
   width: 100%;
-  padding: 64px;
-  margin-right: 325px;
+  padding: 0 64px 0 calc(325px + 64px);
   overflow: auto;
+}
+
+.Section {
+  min-height: 100vh;
+  padding: 64px 0;
+}
+
+.Footer {
+  background-color: var(--color-bg);
+  padding: 48px;
+  display: none;
 }
 
 @media screen and (max-width: 1024px) {
   .Menu {
-    height: 114px;
+    position: fixed;
+    height: 98px;
     width: 100%;
   }
 
   .Content {
-    margin-right: 0;
-    margin-top: 114px;
-    padding: 64px 48px;
+    margin-top: 98px;
+    padding: 0 48px;
+  }
+
+  .Section {
+    min-height: calc(100vh - 98px);
+    padding: 48px 0;
+  }
+
+  .Footer {
+    display: block;
+  }
+
+  .FooterContent {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 @media screen and (max-width: 700px) {
   .Menu {
-    height: 68px;
+    height: max-content;
   }
 
   .Content {
     margin-top: 68px;
+    padding: 0 24px;
+  }
+
+  .Section {
+    min-height: calc(100vh - 68px);
+    padding: 24px 0;
+  }
+
+  .Footer {
     padding: 24px;
   }
-}
 
-.Heading {
-  display: grid;
-  grid-gap: 16px;
-
-  letter-spacing: 0.01em;
-  font-weight: 800;
-  text-align: right;
-}
-
-.Name {
-  font-size: 96px;
-}
-
-.Profession {
-  font-size: 36px;
-}
-
-@media screen and (max-width: 700px) {
-  .Heading {
-    text-align: center;
-  }
-
-  .Name {
-    font-size: 40px;
-  }
-
-  .Profession {
-    font-size: 16px;
+  .FooterContent {
+    grid-template-columns: 1fr;
   }
 }
