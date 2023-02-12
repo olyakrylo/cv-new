@@ -1,0 +1,84 @@
+.Container::before {
+  position: fixed;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  background-image: url("/bg_photo.webp");
+  background-size: cover;
+  background-position: center center;
+  z-index: -1;
+  opacity: 0.4;
+}
+
+.Menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 325px;
+}
+
+.Content {
+  width: 100%;
+  padding: 64px;
+  margin-right: 325px;
+  overflow: auto;
+}
+
+@media screen and (max-width: 1024px) {
+  .Menu {
+    height: 114px;
+    width: 100%;
+  }
+
+  .Content {
+    margin-right: 0;
+    margin-top: 114px;
+    padding: 64px 48px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .Menu {
+    height: 68px;
+  }
+
+  .Content {
+    margin-top: 68px;
+    padding: 24px;
+  }
+}
+
+.Heading {
+  display: grid;
+  grid-gap: 16px;
+
+  letter-spacing: 0.01em;
+  font-weight: 800;
+  text-align: right;
+}
+
+.Name {
+  font-size: 96px;
+}
+
+.Profession {
+  font-size: 36px;
+}
+
+@media screen and (max-width: 700px) {
+  .Heading {
+    text-align: center;
+  }
+
+  .Name {
+    font-size: 40px;
+  }
+
+  .Profession {
+    font-size: 16px;
+  }
+}
