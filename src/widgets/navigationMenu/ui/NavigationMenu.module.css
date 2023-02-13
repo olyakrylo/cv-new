@@ -1,0 +1,84 @@
+.Container {
+  background-color: var(--color-bg-transparent);
+  padding: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.Menu {
+  position: relative;
+  display: grid;
+  grid-gap: 12px;
+  width: 120px;
+}
+
+.Tab {
+  all: unset;
+  width: 100%;
+  height: 60px;
+  font-weight: 800;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.Tab_active {
+  opacity: 1;
+}
+
+.Burger {
+  all: unset;
+  display: none;
+  height: 36px;
+  width: max-content;
+  align-self: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .Container {
+    padding: 24px 48px;
+    background-color: var(--color-bg);
+  }
+
+  .Menu {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .Tab {
+    height: 50px;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .Contacts {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .Container {
+    padding: 8px;
+
+    transform: translateY(calc(-1 * 100% + 54px));
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .Menu {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .Burger {
+    display: inline-block;
+  }
+
+  .Container[aria-expanded="true"] {
+    transform: translateY(0);
+  }
+}
