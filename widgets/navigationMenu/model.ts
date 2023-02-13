@@ -5,12 +5,13 @@ import TelegramIconSrc from '@/shared/icons/telegram.svg';
 import InstagramIconSrc from '@/shared/icons/instagram.svg';
 import GitHubIconSrc from '@/shared/icons/github.svg';
 import { CVDataContactType } from '@/shared/cvData';
+import { Section } from '@/features/navigation';
 
-export const NavigationTabs = [
-  { name: 'About', path: 'about' },
-  { name: 'Skills', path: 'skills' },
-  { name: 'Experience', path: 'experience' },
-  { name: 'Education', path: 'education' },
+export const NavigationTabs: { name: string; id: Section }[] = [
+  { name: 'About', id: Section.ABOUT },
+  // { name: 'Skills', id: 'skills' },
+  { name: 'Experience', id: Section.EXPERIENCE },
+  // { name: 'Education', id: 'education' },
 ];
 
 export const ContactIcons: Record<CVDataContactType, any> = {

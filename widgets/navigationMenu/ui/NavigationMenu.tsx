@@ -1,4 +1,4 @@
-import { FC, useCallback, useState } from 'react';
+import { FC, useCallback, useContext, useState } from 'react';
 import { NavigationMenuProps } from '@/widgets/navigationMenu/type';
 import cn from 'classnames';
 
@@ -8,12 +8,15 @@ import BurgerIcon from '@/shared/icons/burger.svg';
 
 import Image from 'next/image';
 import { Contacts } from '@/entities/contacts';
+import { NavigationContext } from '@/features/navigation';
 
 export const NavigationMenu: FC<NavigationMenuProps> = ({
   className,
   contacts,
 }) => {
   const [expanded, setExpanded] = useState(false);
+
+  const currentSection = useContext(NavigationContext);
 
   const toggle = useCallback(() => {
     setExpanded(!expanded);
@@ -25,9 +28,9 @@ export const NavigationMenu: FC<NavigationMenuProps> = ({
         {NavigationTabs.map((tab) => (
           <button
             className={cn(styles.Tab, {
-              [styles.Tab_active]: tab.path === 'about',
+              [styles.Tab_active]: tab.id === currentSection,
             })}
-            key={tab.path}
+            key={tab.id}
           >
             {tab.name}
           </button>

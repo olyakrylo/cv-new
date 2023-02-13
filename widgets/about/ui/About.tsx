@@ -9,9 +9,10 @@ export const About: FC<AboutProps> = ({
   profession,
   text,
   className,
+  contentRef,
 }) => {
   return (
-    <div className={cn(styles.Container, [className])}>
+    <div className={cn(styles.Container, [className])} ref={contentRef}>
       <div className={styles.Heading}>
         <h1 className={cn(styles.Name)}>{name}</h1>
         <h2 className={styles.Profession}>{profession}</h2>

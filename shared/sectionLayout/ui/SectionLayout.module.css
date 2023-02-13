@@ -1,0 +1,67 @@
+.Container {
+  position:  relative;
+
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+
+  background: rgba(250, 240, 230, 0.5);
+  backdrop-filter: blur(20px);
+}
+
+.Container::before {
+  content: '';
+  position: absolute;
+  top: 135px;
+  left: 500px;
+  right: 64px;
+  bottom: 64px;
+  z-index: -1;
+  box-sizing: border-box;
+  border: 16px solid var(--color-bg-transparent);
+}
+
+.Title {
+  font-size: 80px;
+  align-self: flex-end;
+
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+@media screen and (max-width: 1024px) {
+  .Container {
+    gap: 32px;
+  }
+
+  .Container::before {
+    top: 105px;
+    left: 148px;
+    right: 48px;
+    bottom: 48px;
+    border-width: 12px;
+  }
+
+  .Title {
+    font-size: 64px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .Container {
+    gap: 24px;
+  }
+
+  .Container::before {
+    top: 60px;
+    left: 24px;
+    right: 24px;
+    bottom: 24px;
+    border-width: 8px;
+  }
+
+  .Title {
+    font-size: 40px;
+    align-self: center;
+  }
+}
