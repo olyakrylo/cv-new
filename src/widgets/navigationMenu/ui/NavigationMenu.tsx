@@ -39,8 +39,8 @@ export const NavigationMenu: FC<NavigationMenuProps> = ({
           </button>
         ))}
 
-        <button className={styles.Burger} onClick={toggle}>
-          <Image src={BurgerIcon} alt={''} />
+        <button className={styles.BurgerContainer} onClick={toggle}>
+          <div className={styles.Burger} />
         </button>
       </div>
 

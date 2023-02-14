@@ -11,6 +11,9 @@
   background-position: center center;
   z-index: -1;
   opacity: 0.5;
+
+  color: var(--color-primary);
+  letter-spacing: 0.01em;
 }
 
 .Menu {

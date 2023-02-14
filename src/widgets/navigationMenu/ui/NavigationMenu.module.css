@@ -1,5 +1,5 @@
 .Container {
-  background-color: var(--color-bg-transparent);
+  background-color: var(--color-bg-08);
   padding: 64px;
   display: flex;
   flex-direction: column;
@@ -18,7 +18,7 @@
   width: 100%;
   height: 60px;
   font-weight: 800;
-  font-size: 20px;
+  font-size: var(--font-size-m);
   text-transform: uppercase;
   letter-spacing: 0.01em;
   cursor: pointer;
@@ -30,12 +30,21 @@
   opacity: 1;
 }
 
-.Burger {
+.BurgerContainer {
   all: unset;
   display: none;
+  width: 100%;
+  justify-content: center;
+}
+
+.Burger {
   height: 36px;
-  width: max-content;
-  align-self: center;
+  width: 36px;
+
+  background-color: var(--color-primary);
+  mask-image: url("/icons/burger.svg");
+  mask-size: contain;
+  mask-repeat: no-repeat;
 }
 
 @media screen and (max-width: 1024px) {
@@ -52,7 +61,6 @@
 
   .Tab {
     height: 50px;
-    font-size: 20px;
     text-align: center;
   }
 
@@ -74,8 +82,8 @@
     align-items: center;
   }
 
-  .Burger {
-    display: inline-block;
+  .BurgerContainer {
+    display: flex;
   }
 
   .Container[aria-expanded="true"] {

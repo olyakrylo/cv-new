@@ -6,9 +6,10 @@ import { Contacts } from '@/entities/contacts';
 import { Section, useNavigation } from '@/features/navigation';
 import { NavigationContext } from '@/features/navigation';
 import { getJsonFromS3 } from '@/features/s3';
+import { SectionLayout } from '@/features/sectionLayout';
 import { CVData } from '@/shared/cvData';
-import { SectionLayout } from '@/shared/sectionLayout';
 import { About } from '@/widgets/about';
+import { Experience } from '@/widgets/experience';
 import { NavigationMenu } from '@/widgets/navigationMenu';
 
 import styles from './App.module.css';
@@ -47,7 +48,7 @@ const App: FC<AppProps> = ({ data }) => {
             title={'Experience'}
             className={styles.Section}
           >
-            Content
+            <Experience experience={data.experience} />
           </SectionLayout>
         </div>
 

@@ -2,11 +2,39 @@
   display: grid;
   gap: 16px;
   font-weight: 300;
-  font-size: 14px;
+  font-size: var(--font-size-xs);
 }
 
 .Row {
   display: flex;
   align-items: center;
   gap: 16px;
+}
+
+.Icon {
+  width: 24px;
+  height: 24px;
+
+  background-color: var(--color-primary);
+  mask-size: contain;
+  mask-repeat: no-repeat;
+}
+
+.Icon_mail {
+  mask-image: url("/icons/mail.svg");
+}
+.Icon_phone {
+  mask-image: url("/icons/phone.svg");
+}
+.Icon_telegram {
+  mask-image: url("/icons/telegram.svg");
+}
+.Icon_linkedin {
+  mask-image: url("/icons/linkedin.svg");
+}
+.Icon_instagram {
+  mask-image: url("/icons/instagram.svg");
+}
+.Icon_github {
+  mask-image: url("/icons/github.svg");
 }

@@ -1,10 +1,8 @@
 import { FC, useCallback } from 'react';
 import cn from 'classnames';
-import Image from 'next/image';
 
 import { ContactsProps } from '@/entities/contacts/type';
 import { CVData } from '@/shared/cvData';
-import { ContactIcons } from '@/widgets/navigationMenu/model';
 
 import styles from './Contacts.module.css';
 
@@ -27,10 +25,15 @@ export const Contacts: FC<ContactsProps> = ({ contacts, className }) => {
     <div className={cn(styles.Container, [className])}>
       {contacts.map((contact, i) => (
         <div key={i} className={styles.Row}>
-          <Image
-            className={styles.Icon}
-            src={ContactIcons[contact.type]}
-            alt={''}
+          <div
+            className={cn(styles.Icon, {
+              [styles.Icon_mail]: contact.type === 'mail',
+              [styles.Icon_phone]: contact.type === 'phone',
+              [styles.Icon_linkedin]: contact.type === 'linkedin',
+              [styles.Icon_telegram]: contact.type === 'telegram',
+              [styles.Icon_instagram]: contact.type === 'instagram',
+              [styles.Icon_github]: contact.type === 'github',
+            })}
           />
           {getContactContent(contact)}
         </div>

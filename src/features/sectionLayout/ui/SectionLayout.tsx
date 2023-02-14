@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import cn from 'classnames';
 
-import { SectionLayoutProps } from '@/shared/sectionLayout/type';
+import { SectionLayoutProps } from '@/features/sectionLayout/type';
 
 import styles from './SectionLayout.module.css';
 
