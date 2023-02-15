@@ -1,13 +1,13 @@
 import { FC, useRef } from 'react';
 import cn from 'classnames';
 import { GetServerSideProps } from 'next';
-import { ThemeProvider } from 'next-themes';
 
 import { Contacts } from '@/entities/contacts';
 import { Section, useNavigation } from '@/features/navigation';
 import { NavigationContext } from '@/features/navigation';
 import { getJsonFromS3 } from '@/features/s3';
 import { SectionLayout } from '@/features/sectionLayout';
+import { ThemeContext, useTheme } from '@/features/theme';
 import { CVData } from '@/shared/cvData';
 import { About } from '@/widgets/about';
 import { Experience } from '@/widgets/experience';
@@ -23,6 +23,8 @@ const App: FC<AppProps> = ({ data }) => {
   const aboutRef = useRef<HTMLDivElement>(null);
   const experienceRef = useRef<HTMLDivElement>(null);
 
+  const { theme, toggleTheme } = useTheme();
+
   const { section, navigate } = useNavigation({
     sectionsList: [
       { id: Section.ABOUT, ref: aboutRef },
@@ -35,7 +37,7 @@ const App: FC<AppProps> = ({ data }) => {
   }
 
   return (
-    <ThemeProvider>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <NavigationContext.Provider value={section}>
         <div className={cn(styles.Container)}>
           <div className={styles.Content}>
@@ -68,7 +70,7 @@ const App: FC<AppProps> = ({ data }) => {
           />
         </div>
       </NavigationContext.Provider>
-    </ThemeProvider>
+    </ThemeContext.Provider>
   );
 };
 

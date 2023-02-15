@@ -41,12 +41,12 @@
 .Burger {
   display: none;
 
-  height: 36px;
+  height: 32px;
   width: 36px;
 
   background-color: var(--color-primary);
   mask-image: url("/icons/burger.svg");
-  mask-size: contain;
+  mask-size: cover;
   mask-repeat: no-repeat;
 }
 

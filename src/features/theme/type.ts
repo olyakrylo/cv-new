@@ -3,7 +3,7 @@ export enum Theme {
   DARK = 'dark',
 }
 
-export const InverseTheme = {
+export const inverse = {
   [Theme.LIGHT]: Theme.DARK,
   [Theme.DARK]: Theme.LIGHT,
 };

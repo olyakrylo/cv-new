@@ -1,11 +1,10 @@
 import { FC, useCallback, useContext, useState } from 'react';
 import cn from 'classnames';
-import { useTheme } from 'next-themes';
 
 import { Contacts } from '@/entities/contacts';
 import { NavigationContext } from '@/features/navigation';
+import { ThemeContext } from '@/features/theme';
 
-import { InverseTheme, Theme } from '../lib';
 import { NavigationTabs } from '../model';
 import { NavigationMenuProps } from '../type';
 
@@ -17,17 +16,13 @@ export const NavigationMenu: FC<NavigationMenuProps> = ({
   navigate,
 }) => {
   const [expanded, setExpanded] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { toggleTheme } = useContext(ThemeContext);
 
   const currentSection = useContext(NavigationContext);
 
   const toggleMenu = useCallback(() => {
     setExpanded(!expanded);
   }, [expanded]);
-
-  const toggleTheme = useCallback(() => {
-    setTheme(InverseTheme[theme as Theme]);
-  }, [theme, setTheme]);
 
   return (
     <div className={cn(styles.Container, [className])} aria-expanded={expanded}>

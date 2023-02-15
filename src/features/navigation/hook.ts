@@ -2,7 +2,7 @@ import { RefObject, useCallback, useEffect, useState } from 'react';
 import throttle from 'lodash.throttle';
 import { useRouter } from 'next/router';
 
-import { Section } from '../type';
+import { Section } from './type';
 
 type UseNavigationProps = {
   sectionsList: {
@@ -19,7 +19,7 @@ export const useNavigation = ({ sectionsList }: UseNavigationProps) => {
     (id: Section) => {
       const ref = sectionsList.find((s) => s.id === id)?.ref;
       if (ref?.current) {
-        ref.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        ref.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     },
     [sectionsList]

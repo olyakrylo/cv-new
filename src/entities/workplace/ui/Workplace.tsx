@@ -1,5 +1,5 @@
 import { FC, useCallback, useState } from 'react';
-import Collapse from '@mui/material/Collapse';
+import useCollapse from 'react-collapsed';
 
 import { WorkplaceProps } from '../type';
 
@@ -15,13 +15,23 @@ export const Workplace: FC<WorkplaceProps> = ({
 }) => {
   const [expanded, setExpanded] = useState(defaultExpanded);
 
+  const { getCollapseProps, getToggleProps } = useCollapse({
+    isExpanded: expanded,
+    duration: 300,
+  });
+
   const toggle = useCallback(() => {
     setExpanded(!expanded);
   }, [expanded]);
 
   return (
     <div className={styles.Container} aria-expanded={expanded}>
-      <div className={styles.Heading} onClick={toggle}>
+      <button
+        className={styles.Heading}
+        {...getToggleProps({
+          onClick: toggle,
+        })}
+      >
         <div className={styles.Title}>
           <div className={styles.Arrow} />
           <p>{company}</p>
@@ -29,9 +39,9 @@ export const Workplace: FC<WorkplaceProps> = ({
         <div className={styles.Dates}>
           {startDate} - {endDate ?? 'Present'}
         </div>
-      </div>
+      </button>
 
-      <Collapse in={expanded} timeout={200}>
+      <section {...getCollapseProps()}>
         <div className={styles.Content}>
           {description.map((text, i) => (
             <p className={styles.Description} key={i}>
@@ -45,7 +55,7 @@ export const Workplace: FC<WorkplaceProps> = ({
             ))}
           </div>
         </div>
-      </Collapse>
+      </section>
     </div>
   );
 };
