@@ -29,9 +29,14 @@
   overflow: auto;
 }
 
+.SectionList {
+  background: var(--color-bg-05);
+  backdrop-filter: blur(20px);
+}
+
 .Section {
   min-height: 100vh;
-  padding: 64px 64px 64px calc(325px + 64px)
+  padding: 64px 64px 64px calc(325px + 64px);
 }
 
 .Footer {

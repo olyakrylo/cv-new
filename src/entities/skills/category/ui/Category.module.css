@@ -1,0 +1,64 @@
+.Container {
+  display: grid;
+  grid-gap: 12px;
+  width: 280px;
+  height: max-content;
+}
+
+.Heading {
+  padding: 12px 0;
+  box-shadow: 0 -4px 0 0 var(--color-primary) inset;
+
+  font-weight: var(--font-weight-extra-bold);
+  font-size: var(--font-size-l);
+}
+
+.List {
+  display: grid;
+}
+
+.Item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 6px 0;
+
+  font-weight: var(--font-weight-light);
+  font-size: var(--font-size-s);
+}
+
+.Item::before {
+  content: '';
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-primary);
+  mask-image: url("/icons/arrowDown.svg");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  transform: rotate(-90deg);
+
+  opacity: 0.5;
+}
+
+@media screen and (max-width: 700px) {
+  .Container {
+    width: 100%;
+  }
+
+  .Heading {
+    text-align: center;
+    box-shadow: 0 -3px 0 0 var(--color-primary) inset;
+  }
+
+  .List {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .Item:nth-child(2n) {
+    flex-direction: row-reverse;
+  }
+
+  .Item:nth-child(2n)::before {
+    transform: rotate(90deg);
+  }
+}

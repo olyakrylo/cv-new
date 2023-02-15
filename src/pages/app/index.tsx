@@ -3,8 +3,11 @@ import cn from 'classnames';
 import { GetServerSideProps } from 'next';
 
 import { Contacts } from '@/entities/contacts';
-import { Section, useNavigation } from '@/features/navigation';
-import { NavigationContext } from '@/features/navigation';
+import {
+  NavigationContext,
+  Section,
+  useNavigation,
+} from '@/features/navigation';
 import { getJsonFromS3 } from '@/features/s3';
 import { SectionLayout } from '@/features/sectionLayout';
 import { ThemeContext, useTheme } from '@/features/theme';
@@ -12,6 +15,7 @@ import { CVData } from '@/shared/cvData';
 import { About } from '@/widgets/about';
 import { Experience } from '@/widgets/experience';
 import { NavigationMenu } from '@/widgets/navigationMenu';
+import { Skills } from '@/widgets/skills';
 
 import styles from './App.module.css';
 
@@ -22,6 +26,7 @@ type AppProps = {
 const App: FC<AppProps> = ({ data }) => {
   const aboutRef = useRef<HTMLDivElement>(null);
   const experienceRef = useRef<HTMLDivElement>(null);
+  const skillsRef = useRef<HTMLDivElement>(null);
 
   const { theme, toggleTheme } = useTheme();
 
@@ -29,6 +34,7 @@ const App: FC<AppProps> = ({ data }) => {
     sectionsList: [
       { id: Section.ABOUT, ref: aboutRef },
       { id: Section.EXPERIENCE, ref: experienceRef },
+      { id: Section.SKILLS, ref: skillsRef },
     ],
   });
 
@@ -47,13 +53,23 @@ const App: FC<AppProps> = ({ data }) => {
               className={styles.Section}
             />
 
-            <SectionLayout
-              contentRef={experienceRef}
-              title={'Experience'}
-              className={styles.Section}
-            >
-              <Experience experience={data.experience} />
-            </SectionLayout>
+            <div className={styles.SectionList}>
+              <SectionLayout
+                title={'Skills'}
+                contentRef={skillsRef}
+                className={styles.Section}
+              >
+                <Skills skills={data.skills} />
+              </SectionLayout>
+
+              <SectionLayout
+                contentRef={experienceRef}
+                title={'Experience'}
+                className={styles.Section}
+              >
+                <Experience experience={data.experience} />
+              </SectionLayout>
+            </div>
           </div>
 
           <div className={styles.Footer}>
