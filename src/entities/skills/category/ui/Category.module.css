@@ -9,7 +9,7 @@
   padding: 12px 0;
   box-shadow: 0 -4px 0 0 var(--color-primary) inset;
 
-  font-weight: var(--font-weight-extra-bold);
+  font-weight: var(--font-weight-bold);
   font-size: var(--font-size-l);
 }
 

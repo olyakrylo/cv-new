@@ -3,5 +3,6 @@
   flex-wrap: wrap;
   justify-content: space-between;
   column-gap: 48px;
-  row-gap: 24px;
+  row-gap: 16px;
+  max-width: 1200px;
 }

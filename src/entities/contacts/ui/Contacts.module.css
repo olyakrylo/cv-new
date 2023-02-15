@@ -1,7 +1,7 @@
 .Container {
   display: grid;
   gap: 16px;
-  font-weight: 300;
+  font-weight: var(--font-weight-light);
   font-size: var(--font-size-xs);
 }
 
@@ -37,4 +37,24 @@
 }
 .Icon_github {
   mask-image: url("/icons/github.svg");
+}
+
+@media screen and (max-width: 1024px) {
+  .Container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .Row:nth-child(2n) {
+    flex-direction: row-reverse;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .Container {
+    grid-template-columns: 1fr;
+  }
+
+  .Row:nth-child(n) {
+    flex-direction: row;
+  }
 }

@@ -9,8 +9,7 @@
   display: grid;
   grid-gap: 16px;
 
-  letter-spacing: 0.01em;
-  font-weight: 800;
+  font-weight: var(--font-weight-extra-bold);
   text-align: right;
 }
 
@@ -30,9 +29,8 @@
   background-color: var(--color-bg);
   padding: 16px 16px 16px 64px;
   max-width: 800px;
-  font-weight: 300;
+  font-weight: var(--font-weight-light);
   font-size: var(--font-size-s);
-  letter-spacing: 0.01em;
 }
 
 @media screen and (max-width: 1024px) {

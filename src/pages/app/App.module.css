@@ -13,7 +13,6 @@
   opacity: 0.5;
 
   color: var(--color-primary);
-  letter-spacing: 0.01em;
 }
 
 .Menu {
@@ -21,7 +20,7 @@
   top: 0;
   left: 0;
   height: 100vh;
-  width: 325px;
+  width: 335px;
 }
 
 .Content {
@@ -64,10 +63,6 @@
   .Footer {
     display: block;
   }
-
-  .FooterContent {
-    grid-template-columns: 1fr 1fr;
-  }
 }
 
 @media screen and (max-width: 700px) {
@@ -86,9 +81,5 @@
 
   .Footer {
     padding: 24px;
-  }
-
-  .FooterContent {
-    grid-template-columns: 1fr;
   }
 }

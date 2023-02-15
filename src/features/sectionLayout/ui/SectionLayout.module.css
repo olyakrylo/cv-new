@@ -22,8 +22,7 @@
   font-size: var(--font-size-xxl);
   align-self: flex-end;
 
-  font-weight: 800;
-  letter-spacing: 0.01em;
+  font-weight: var(--font-weight-extra-bold);
 }
 
 @media screen and (max-width: 1024px) {
