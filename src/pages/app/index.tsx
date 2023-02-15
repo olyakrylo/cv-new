@@ -1,6 +1,7 @@
 import { FC, useRef } from 'react';
 import cn from 'classnames';
 import { GetServerSideProps } from 'next';
+import { ThemeProvider } from 'next-themes';
 
 import { Contacts } from '@/entities/contacts';
 import { Section, useNavigation } from '@/features/navigation';
@@ -34,35 +35,40 @@ const App: FC<AppProps> = ({ data }) => {
   }
 
   return (
-    <NavigationContext.Provider value={section}>
-      <div className={cn(styles.Container)}>
-        <div className={styles.Content}>
-          <About
-            {...data.about}
-            contentRef={aboutRef}
-            className={styles.Section}
+    <ThemeProvider>
+      <NavigationContext.Provider value={section}>
+        <div className={cn(styles.Container)}>
+          <div className={styles.Content}>
+            <About
+              {...data.about}
+              contentRef={aboutRef}
+              className={styles.Section}
+            />
+
+            <SectionLayout
+              contentRef={experienceRef}
+              title={'Experience'}
+              className={styles.Section}
+            >
+              <Experience experience={data.experience} />
+            </SectionLayout>
+          </div>
+
+          <div className={styles.Footer}>
+            <Contacts
+              contacts={data.contacts}
+              className={styles.FooterContent}
+            />
+          </div>
+
+          <NavigationMenu
+            navigate={navigate}
+            contacts={data.contacts}
+            className={styles.Menu}
           />
-
-          <SectionLayout
-            contentRef={experienceRef}
-            title={'Experience'}
-            className={styles.Section}
-          >
-            <Experience experience={data.experience} />
-          </SectionLayout>
         </div>
-
-        <div className={styles.Footer}>
-          <Contacts contacts={data.contacts} className={styles.FooterContent} />
-        </div>
-
-        <NavigationMenu
-          navigate={navigate}
-          contacts={data.contacts}
-          className={styles.Menu}
-        />
-      </div>
-    </NavigationContext.Provider>
+      </NavigationContext.Provider>
+    </ThemeProvider>
   );
 };
 

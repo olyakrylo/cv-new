@@ -35,7 +35,7 @@
   }
 
   .Container::before {
-    top: 122px;
+    top: 106px;
     left: 148px;
     right: 48px;
     bottom: 48px;
@@ -49,10 +49,10 @@
   }
 
   .Container::before {
-    top: 60px;
+    top: 92px;
     left: 24px;
     right: 24px;
-    bottom: 24px;
+    bottom: 48px;
     border-width: 8px;
   }
 

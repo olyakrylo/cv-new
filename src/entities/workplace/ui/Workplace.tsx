@@ -1,7 +1,5 @@
 import { FC, useCallback, useState } from 'react';
-import Image from 'next/image';
-
-import ArrowDown from '@/shared/icons/arrowDown.svg';
+import Collapse from '@mui/material/Collapse';
 
 import { WorkplaceProps } from '../type';
 
@@ -33,7 +31,7 @@ export const Workplace: FC<WorkplaceProps> = ({
         </div>
       </div>
 
-      {expanded && (
+      <Collapse in={expanded} timeout={200}>
         <div className={styles.Content}>
           {description.map((text, i) => (
             <p className={styles.Description} key={i}>
@@ -47,7 +45,7 @@ export const Workplace: FC<WorkplaceProps> = ({
             ))}
           </div>
         </div>
-      )}
+      </Collapse>
     </div>
   );
 };

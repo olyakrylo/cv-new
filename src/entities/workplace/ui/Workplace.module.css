@@ -54,15 +54,6 @@
   flex-direction: column;
   gap: 16px;
   padding: 8px 0 0;
-  overflow: hidden;
-
-  max-height: 0;
-
-  transition: max-height 0.3s ease-in-out;
-}
-
-.Container[aria-expanded='true'] .Content {
-  max-height: max-content;
 }
 
 .Description {

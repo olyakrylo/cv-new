@@ -76,7 +76,7 @@
 
   .Section {
     min-height: calc(100vh - 54px);
-    padding: 24px;
+    padding: 48px 24px;
   }
 
   .Footer {

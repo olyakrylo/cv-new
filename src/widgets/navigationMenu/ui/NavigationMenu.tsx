@@ -1,13 +1,13 @@
 import { FC, useCallback, useContext, useState } from 'react';
 import cn from 'classnames';
-import Image from 'next/image';
+import { useTheme } from 'next-themes';
 
 import { Contacts } from '@/entities/contacts';
 import { NavigationContext } from '@/features/navigation';
-import BurgerIcon from '@/shared/icons/burger.svg';
-import { NavigationMenuProps } from '@/widgets/navigationMenu/type';
 
+import { InverseTheme, Theme } from '../lib';
 import { NavigationTabs } from '../model';
+import { NavigationMenuProps } from '../type';
 
 import styles from './NavigationMenu.module.css';
 
@@ -17,12 +17,17 @@ export const NavigationMenu: FC<NavigationMenuProps> = ({
   navigate,
 }) => {
   const [expanded, setExpanded] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   const currentSection = useContext(NavigationContext);
 
-  const toggle = useCallback(() => {
+  const toggleMenu = useCallback(() => {
     setExpanded(!expanded);
   }, [expanded]);
+
+  const toggleTheme = useCallback(() => {
+    setTheme(InverseTheme[theme as Theme]);
+  }, [theme, setTheme]);
 
   return (
     <div className={cn(styles.Container, [className])} aria-expanded={expanded}>
@@ -39,9 +44,11 @@ export const NavigationMenu: FC<NavigationMenuProps> = ({
           </button>
         ))}
 
-        <button className={styles.BurgerContainer} onClick={toggle}>
-          <div className={styles.Burger} />
-        </button>
+        <div className={styles.Controls}>
+          <button className={styles.ThemeSwitcher} onClick={toggleTheme} />
+
+          <div className={styles.Burger} onClick={toggleMenu} />
+        </div>
       </div>
 
       <div className={styles.Contacts}>
