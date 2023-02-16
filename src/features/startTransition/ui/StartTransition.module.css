@@ -1,0 +1,27 @@
+.Container {
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.Container_hidden {
+  opacity: 0;
+}
+
+.Container_hidden.Container_left,
+.Container_hidden.Container_desktop_left_tablet_top {
+  transform: translateX(-150px);
+}
+.Container_hidden.Container_top {
+  transform: translateY(-150px);
+}
+.Container_hidden.Container_right {
+  transform: translateX(150px);
+}
+.Container_hidden.Container_bottom {
+  transform: translateY(150px);
+}
+
+@media screen and (max-width: 1024px) {
+  .Container_hidden.Container_desktop_left_tablet_top {
+    transform: translateY(-150px);
+  }
+}

@@ -68,7 +68,7 @@ export const useNavigation = ({ sectionsList }: UseNavigationProps) => {
     const ref = sectionsList.find((s) => s.id === sectionFromUrl)?.ref;
 
     if (ref?.current) {
-      ref.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      ref.current.scrollIntoView({ block: 'start' });
       setSection(sectionFromUrl);
     }
     // только при открытии страницы

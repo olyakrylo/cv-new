@@ -170,11 +170,14 @@
   .Container {
     padding: 8px 16px;
 
-    transform: translateY(calc(-1 * 100% + 50px));
     transition: transform 0.2s ease-in-out;
 
     --tab-height: 40px;
     --border-width: 2px;
+  }
+
+  .Container[aria-expanded="false"] {
+    transform: translateY(calc(-1 * 100% + 50px));
   }
 
   .Menu {

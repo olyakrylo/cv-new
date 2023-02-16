@@ -3,6 +3,7 @@ import cn from 'classnames';
 
 import { Contacts } from '@/entities/contacts';
 import { NavigationContext, Section } from '@/features/navigation';
+import { useStartTransition } from '@/features/startTransition';
 import { ThemeContext } from '@/features/theme';
 
 import { NavigationTabs } from '../model';
@@ -16,16 +17,23 @@ export const NavigationMenu: FC<NavigationMenuProps> = ({
   navigate,
 }) => {
   const [expanded, setExpanded] = useState(false);
-  const { toggleTheme } = useContext(ThemeContext);
 
+  const { toggleTheme } = useContext(ThemeContext);
   const currentSection = useContext(NavigationContext);
+
+  const { startTransitionCN } = useStartTransition({
+    from: 'desktop_left_tablet_top',
+  });
 
   const toggleMenu = useCallback(() => {
     setExpanded(!expanded);
   }, [expanded]);
 
   return (
-    <div className={cn(styles.Container, [className])} aria-expanded={expanded}>
+    <div
+      className={cn(styles.Container, [className, startTransitionCN])}
+      aria-expanded={expanded}
+    >
       <div
         className={cn(styles.Menu, {
           [styles.Menu_tab_about]: currentSection === Section.ABOUT,
