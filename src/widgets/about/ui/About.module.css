@@ -21,6 +21,7 @@
 .Profession {
   font-size: var(--font-size-xl);
   text-shadow: 0 0 20px var(--color-bg-05);
+  font-weight: var(--font-weight-bold);
 }
 
 .Text {
