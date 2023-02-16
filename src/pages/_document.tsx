@@ -15,6 +15,7 @@ export default function Document() {
           href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;700;800&display=swap"
           rel="stylesheet"
         />
+        <link rel="preload" href="bg_1000_orig.webp" as="image" />
       </Head>
       <body>
         <Main />

@@ -1,4 +1,6 @@
-.Container::before {
+.Container::before,
+.Content::before,
+.Content::after {
   position: fixed;
   content: '';
   top: 0;
@@ -6,13 +8,21 @@
   width: 100vw;
   height: 100vh;
 
-  background-image: url("/bg_photo.webp");
   background-size: cover;
   background-position: center center;
   z-index: -1;
-  opacity: 0.5;
+}
 
-  color: var(--color-primary);
+.Container::before {
+  background-image: url("/bg_1000_orig.webp");
+}
+
+.Content::before {
+  background-image: url("/bg_orig.webp");
+}
+
+.Content::after {
+  background-color: var(--color-bg-05);
 }
 
 .Menu {

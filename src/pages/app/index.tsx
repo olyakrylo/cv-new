@@ -104,12 +104,12 @@ const App: FC<AppProps> = ({ data }) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   let data: CVData | null;
+  const key = process.env.NEXT_PUBLIC_DATA_KEY as string;
 
   if (process.env.NODE_ENV === 'development') {
-    const file = fs.readFileSync('cv-info.json', 'utf-8');
+    const file = fs.readFileSync(key, 'utf-8');
     data = JSON.parse(file);
   } else {
-    const key = process.env.NEXT_PUBLIC_DATA_KEY as string;
     data = await getJsonFromS3<CVData>(key);
   }
 
