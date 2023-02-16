@@ -26,6 +26,11 @@
 @media screen and (max-width: 1024px) {
   :root {
     --font-size-xxl: 64px;
+    --font-size-xl: 28px;
+    --font-size-l: 20px;
+    --font-size-m: 16px;
+    --font-size-s: 14px;
+    --font-size-xs: 12px;
   }
 }
 

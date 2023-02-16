@@ -2,7 +2,7 @@ import { FC, useCallback, useContext, useState } from 'react';
 import cn from 'classnames';
 
 import { Contacts } from '@/entities/contacts';
-import { NavigationContext } from '@/features/navigation';
+import { NavigationContext, Section } from '@/features/navigation';
 import { ThemeContext } from '@/features/theme';
 
 import { NavigationTabs } from '../model';
@@ -26,7 +26,13 @@ export const NavigationMenu: FC<NavigationMenuProps> = ({
 
   return (
     <div className={cn(styles.Container, [className])} aria-expanded={expanded}>
-      <div className={styles.Menu}>
+      <div
+        className={cn(styles.Menu, {
+          [styles.Menu_tab_about]: currentSection === Section.ABOUT,
+          [styles.Menu_tab_skills]: currentSection === Section.SKILLS,
+          [styles.Menu_tab_experience]: currentSection === Section.EXPERIENCE,
+        })}
+      >
         {NavigationTabs.map((tab) => (
           <button
             className={cn(styles.Tab, {

@@ -4,19 +4,24 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  --menu-gap: 12px;
+  --tab-height: 54px;
+  --border-width: 3px;
+  --tab-width: 150px;
 }
 
 .Menu {
   position: relative;
   display: grid;
-  grid-gap: 12px;
-  width: 120px;
+  grid-gap: var(--menu-gap);
+  width: max-content;
 }
 
 .Tab {
   all: unset;
   width: 100%;
-  height: 54px;
+  height: var(--tab-height);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-m);
   text-transform: uppercase;
@@ -27,6 +32,30 @@
 
 .Tab_active {
   opacity: 1;
+}
+
+.Menu::after {
+  position: absolute;
+  content: '';
+  height: var(--border-width);
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color-primary);
+
+  transition: transform 0.2s;
+}
+
+.Menu_tab_about::after {
+  transform: translateY(calc(var(--tab-height) - var(--border-width)));
+}
+
+.Menu_tab_skills::after {
+  transform: translateY(calc(var(--tab-height) * 2 + var(--menu-gap) - var(--border-width)));
+}
+
+.Menu_tab_experience::after {
+  transform: translateY(calc(var(--tab-height) * 3 + var(--menu-gap) * 2 - var(--border-width)));
 }
 
 .Controls {
@@ -67,26 +96,51 @@
   .Container {
     padding: 24px 48px;
     background-color: var(--color-bg);
+
+    --tab-width: 110px;
+    --tab-height: 50px;
   }
 
   .Menu {
     display: flex;
-    justify-content: space-between;
     width: 100%;
   }
 
   .Tab {
-    height: 50px;
+    min-width: var(--tab-width);
+    max-width: var(--tab-width);
     text-align: center;
   }
 
   .Controls {
-    justify-content: center;
+    justify-content: flex-end;
     height: 50px;
   }
 
   .Contacts {
     display: none;
+  }
+}
+
+@media screen and (min-width: 701px) and (max-width: 1024px) {
+  .Menu::after {
+    top: unset;
+    bottom: 0;
+    left: 0;
+    width: 110px;
+    transform: translateY(0);
+  }
+
+  .Menu_tab_about::after {
+    transform: translateX(0);
+  }
+
+  .Menu_tab_skills::after {
+    transform: translateX(calc(var(--tab-width) + var(--menu-gap)));
+  }
+
+  .Menu_tab_experience::after {
+    transform: translateX(calc(var(--tab-width) * 2 + var(--menu-gap) * 2));
   }
 }
 
@@ -96,6 +150,9 @@
 
     transform: translateY(calc(-1 * 100% + 50px));
     transition: transform 0.2s ease-in-out;
+
+    --tab-height: 40px;
+    --border-width: 2px;
   }
 
   .Menu {
@@ -103,8 +160,9 @@
     align-items: center;
   }
 
-  .Tab {
-    height: 40px;
+  .Menu::after {
+    left: 96px;
+    right: 96px;
   }
 
   .Controls {
