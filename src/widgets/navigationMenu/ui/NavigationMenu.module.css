@@ -58,6 +58,10 @@
   transform: translateY(calc(var(--tab-height) * 3 + var(--menu-gap) * 2 - var(--border-width)));
 }
 
+.Menu_tab_education::after {
+  transform: translateY(calc(var(--tab-height) * 4 + var(--menu-gap) * 3 - var(--border-width)));
+}
+
 .Controls {
   width: 100%;
   display: flex;
@@ -140,7 +144,11 @@
   }
 
   .Menu_tab_experience::after {
-    transform: translateX(calc(var(--tab-width) * 2 + var(--menu-gap) * 2));
+    transform: translateX(calc((var(--tab-width) + var(--menu-gap)) * 2));
+  }
+
+  .Menu_tab_education::after {
+    transform: translateX(calc((var(--tab-width) + var(--menu-gap)) * 3));
   }
 }
 

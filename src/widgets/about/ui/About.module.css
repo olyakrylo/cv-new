@@ -9,13 +9,13 @@
   display: grid;
   grid-gap: 16px;
 
-  font-weight: var(--font-weight-extra-bold);
   text-align: right;
 }
 
 .Name {
   font-size: var(--font-size-xxl);
   text-shadow: 0 0 20px var(--color-bg-05);
+  font-weight: var(--font-weight-extra-bold);
 }
 
 .Profession {

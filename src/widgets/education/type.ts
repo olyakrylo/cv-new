@@ -1,5 +1,5 @@
 import { CVDataOrganization } from '@/shared/cvData';
 
-export type ExperienceProps = {
+export type EducationProps = {
   organizations: CVDataOrganization[];
 };

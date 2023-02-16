@@ -3,15 +3,16 @@ import useCollapse from 'react-collapsed';
 
 import { WorkplaceProps } from '../type';
 
-import styles from './Workplace.module.css';
+import styles from './Organization.module.css';
 
-export const Workplace: FC<WorkplaceProps> = ({
+export const Organization: FC<WorkplaceProps> = ({
   defaultExpanded = false,
-  company,
+  name,
   startDate,
   endDate,
   description,
-  skills,
+  tags,
+  disabled = false,
 }) => {
   const [expanded, setExpanded] = useState(defaultExpanded);
 
@@ -21,20 +22,22 @@ export const Workplace: FC<WorkplaceProps> = ({
   });
 
   const toggle = useCallback(() => {
+    if (disabled) return;
     setExpanded(!expanded);
-  }, [expanded]);
+  }, [disabled, expanded]);
 
   return (
     <div className={styles.Container} aria-expanded={expanded}>
       <button
         className={styles.Heading}
+        aria-disabled={disabled}
         {...getToggleProps({
           onClick: toggle,
         })}
       >
         <div className={styles.Title}>
-          <div className={styles.Arrow} />
-          <p>{company}</p>
+          {!disabled && <div className={styles.Arrow} />}
+          <p>{name}</p>
         </div>
         <div className={styles.Dates}>
           {startDate} - {endDate ?? 'Present'}
@@ -49,9 +52,9 @@ export const Workplace: FC<WorkplaceProps> = ({
             </p>
           ))}
 
-          <div className={styles.Skills}>
-            {skills.map((skill, i) => (
-              <span key={i}>{skill}</span>
+          <div className={styles.Tags}>
+            {tags.map((tag, i) => (
+              <span key={i}>{tag}</span>
             ))}
           </div>
         </div>

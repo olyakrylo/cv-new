@@ -1,5 +1,6 @@
 import { FC, useRef } from 'react';
 import cn from 'classnames';
+import * as fs from 'fs';
 import { GetServerSideProps } from 'next';
 
 import { Contacts } from '@/entities/contacts';
@@ -13,6 +14,7 @@ import { SectionLayout } from '@/features/sectionLayout';
 import { ThemeContext, useTheme } from '@/features/theme';
 import { CVData } from '@/shared/cvData';
 import { About } from '@/widgets/about';
+import { Education } from '@/widgets/education';
 import { Experience } from '@/widgets/experience';
 import { NavigationMenu } from '@/widgets/navigationMenu';
 import { Skills } from '@/widgets/skills';
@@ -27,6 +29,7 @@ const App: FC<AppProps> = ({ data }) => {
   const aboutRef = useRef<HTMLDivElement>(null);
   const experienceRef = useRef<HTMLDivElement>(null);
   const skillsRef = useRef<HTMLDivElement>(null);
+  const educationRef = useRef<HTMLDivElement>(null);
 
   const { theme, toggleTheme } = useTheme();
 
@@ -35,6 +38,7 @@ const App: FC<AppProps> = ({ data }) => {
       { id: Section.ABOUT, ref: aboutRef },
       { id: Section.EXPERIENCE, ref: experienceRef },
       { id: Section.SKILLS, ref: skillsRef },
+      { id: Section.EDUCATION, ref: educationRef },
     ],
   });
 
@@ -55,8 +59,8 @@ const App: FC<AppProps> = ({ data }) => {
 
             <div className={styles.SectionList}>
               <SectionLayout
-                title={'Skills'}
                 contentRef={skillsRef}
+                title="Skills"
                 className={styles.Section}
               >
                 <Skills skills={data.skills} />
@@ -64,10 +68,18 @@ const App: FC<AppProps> = ({ data }) => {
 
               <SectionLayout
                 contentRef={experienceRef}
-                title={'Experience'}
+                title="Experience"
                 className={styles.Section}
               >
-                <Experience experience={data.experience} />
+                <Experience organizations={data.experience} />
+              </SectionLayout>
+
+              <SectionLayout
+                contentRef={educationRef}
+                title="Education"
+                className={styles.Section}
+              >
+                <Education organizations={data.education} />
               </SectionLayout>
             </div>
           </div>
@@ -91,8 +103,15 @@ const App: FC<AppProps> = ({ data }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const key = process.env.NEXT_PUBLIC_DATA_KEY as string;
-  const data = await getJsonFromS3<CVData>(key);
+  let data: CVData | null;
+
+  if (process.env.NODE_ENV === 'development') {
+    const file = fs.readFileSync('cv-info.json', 'utf-8');
+    data = JSON.parse(file);
+  } else {
+    const key = process.env.NEXT_PUBLIC_DATA_KEY as string;
+    data = await getJsonFromS3<CVData>(key);
+  }
 
   return {
     props: {

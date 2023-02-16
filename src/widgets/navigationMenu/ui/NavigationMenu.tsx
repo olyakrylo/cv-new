@@ -31,6 +31,7 @@ export const NavigationMenu: FC<NavigationMenuProps> = ({
           [styles.Menu_tab_about]: currentSection === Section.ABOUT,
           [styles.Menu_tab_skills]: currentSection === Section.SKILLS,
           [styles.Menu_tab_experience]: currentSection === Section.EXPERIENCE,
+          [styles.Menu_tab_education]: currentSection === Section.EDUCATION,
         })}
       >
         {NavigationTabs.map((tab) => (

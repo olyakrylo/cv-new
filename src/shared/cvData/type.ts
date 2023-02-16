@@ -1,7 +1,8 @@
 export type CVData = {
   about: CVDataAbout;
   contacts: CVDataContact[];
-  experience: CVDataWorkplace[];
+  experience: CVDataOrganization[];
+  education: CVDataOrganization[];
   skills: CVDataSkillsCategory[];
 };
 
@@ -25,12 +26,12 @@ export type CVDataContact = {
   link?: string;
 };
 
-export type CVDataWorkplace = {
-  company: string;
+export type CVDataOrganization = {
+  name: string;
   startDate: string;
   endDate?: string;
   description: string[];
-  skills: string[];
+  tags: string[];
 };
 
 export type CVDataSkillsCategory = {
