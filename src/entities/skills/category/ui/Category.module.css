@@ -37,7 +37,13 @@
   mask-repeat: no-repeat;
   transform: rotate(-90deg);
 
+  transition: transform 0.2s ease-in-out;
+
   opacity: 0.5;
+}
+
+.Item:hover::before {
+  transform: translateX(4px) rotate(-90deg);
 }
 
 @media screen and (max-width: 700px) {

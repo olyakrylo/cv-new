@@ -30,7 +30,7 @@
   transition: opacity 0.2s ease-in-out;
 }
 
-.Tab_active {
+.Tab_active, .Tab:hover {
   opacity: 1;
 }
 
@@ -94,6 +94,20 @@
   mask-repeat: no-repeat;
 
   cursor: pointer;
+
+  animation: rotate 30s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @media screen and (max-width: 1024px) {

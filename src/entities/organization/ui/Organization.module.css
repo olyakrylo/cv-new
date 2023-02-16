@@ -32,7 +32,7 @@
   height: 16px;
   transform: rotate(-90deg);
 
-  transition: transform 0.2s linear;
+  transition: transform 0.2s ease-in-out;
 
   background-color: var(--color-primary);
   mask-image: url("/icons/arrowDown.svg");
@@ -42,6 +42,10 @@
 
 .Container[aria-expanded='true'] .Arrow {
   transform: rotate(0);
+}
+
+.Container[aria-expanded='false'] .Heading:hover .Arrow {
+  transform: translateX(8px) rotate(-90deg);
 }
 
 .Dates {
