@@ -1,7 +1,5 @@
 import { FC, useRef } from 'react';
 import cn from 'classnames';
-import * as fs from 'fs';
-import { GetServerSideProps } from 'next';
 
 import { Contacts } from '@/entities/contacts';
 import {
@@ -9,23 +7,19 @@ import {
   Section,
   useNavigation,
 } from '@/features/navigation';
-import { getJsonFromS3 } from '@/features/s3';
 import { SectionLayout } from '@/features/sectionLayout';
 import { ThemeContext, useTheme } from '@/features/theme';
-import { CVData } from '@/shared/cvData';
 import { About } from '@/widgets/about';
 import { Education } from '@/widgets/education';
 import { Experience } from '@/widgets/experience';
 import { NavigationMenu } from '@/widgets/navigationMenu';
 import { Skills } from '@/widgets/skills';
 
-import styles from './App.module.css';
+import { CVViewProps } from '../type';
 
-type AppProps = {
-  data: CVData | null;
-};
+import styles from './CV.module.css';
 
-const App: FC<AppProps> = ({ data }) => {
+export const CV: FC<CVViewProps> = (data) => {
   const aboutRef = useRef<HTMLDivElement>(null);
   const experienceRef = useRef<HTMLDivElement>(null);
   const skillsRef = useRef<HTMLDivElement>(null);
@@ -41,10 +35,6 @@ const App: FC<AppProps> = ({ data }) => {
       { id: Section.EDUCATION, ref: educationRef },
     ],
   });
-
-  if (!data) {
-    return <h1>:(</h1>;
-  }
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
@@ -101,23 +91,3 @@ const App: FC<AppProps> = ({ data }) => {
     </ThemeContext.Provider>
   );
 };
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  let data: CVData | null;
-  const key = process.env.NEXT_PUBLIC_DATA_KEY as string;
-
-  if (process.env.NODE_ENV === 'development') {
-    const file = fs.readFileSync(key, 'utf-8');
-    data = JSON.parse(file);
-  } else {
-    data = await getJsonFromS3<CVData>(key);
-  }
-
-  return {
-    props: {
-      data,
-    },
-  };
-};
-
-export default App;

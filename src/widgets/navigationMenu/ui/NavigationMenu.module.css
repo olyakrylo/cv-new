@@ -140,7 +140,7 @@
   }
 }
 
-@media screen and (min-width: 701px) and (max-width: 1024px) {
+@media screen and (min-width: 601px) and (max-width: 1024px) {
   .Menu::after {
     top: unset;
     bottom: 0;
@@ -166,7 +166,7 @@
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 600px) {
   .Container {
     padding: 8px 16px;
 

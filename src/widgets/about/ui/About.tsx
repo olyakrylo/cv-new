@@ -14,7 +14,7 @@ export const About: FC<AboutProps> = ({
   contentRef,
 }) => {
   const { startTransitionCN: rightTransition } = useStartTransition({
-    from: 'right',
+    from: 'all_right_mobile_top',
   });
   const { startTransitionCN: bottomTransition } = useStartTransition({
     from: 'bottom',

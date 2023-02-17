@@ -13,7 +13,8 @@
 .Container_hidden.Container_top {
   transform: translateY(-150px);
 }
-.Container_hidden.Container_right {
+.Container_hidden.Container_right,
+.Container_hidden.Container_all_right_mobile_top {
   transform: translateX(150px);
 }
 .Container_hidden.Container_bottom {
@@ -22,6 +23,12 @@
 
 @media screen and (max-width: 1024px) {
   .Container_hidden.Container_desktop_left_tablet_top {
+    transform: translateY(-150px);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .Container_hidden.Container_all_right_mobile_top {
     transform: translateY(-150px);
   }
 }
