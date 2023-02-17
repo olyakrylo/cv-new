@@ -1,6 +1,5 @@
 import { RefObject, useCallback, useEffect, useState } from 'react';
 import throttle from 'lodash.throttle';
-import { useRouter } from 'next/router';
 
 import { Section } from './type';
 
@@ -13,7 +12,6 @@ type UseNavigationProps = {
 
 export const useNavigation = ({ sectionsList }: UseNavigationProps) => {
   const [section, setSection] = useState<Section>(Section.ABOUT);
-  const router = useRouter();
 
   const navigate = useCallback(
     (id: Section) => {
@@ -40,19 +38,8 @@ export const useNavigation = ({ sectionsList }: UseNavigationProps) => {
 
     if (currentSection && currentSection.id !== section) {
       setSection(currentSection.id);
-      void router.push(
-        {
-          pathname: router.pathname,
-          query:
-            currentSection.id === Section.ABOUT
-              ? {}
-              : { section: currentSection.id },
-        },
-        undefined,
-        { shallow: true }
-      );
     }
-  }, [sectionsList, section, router]);
+  }, [sectionsList, section]);
 
   useEffect(() => {
     const scrollHandler = throttle(handleScroll, 300);
@@ -60,20 +47,6 @@ export const useNavigation = ({ sectionsList }: UseNavigationProps) => {
     window.addEventListener('scroll', scrollHandler);
     return () => window.removeEventListener('scroll', scrollHandler);
   }, [handleScroll]);
-
-  useEffect(() => {
-    const sectionFromUrl = router.query.section as Section;
-    if (!sectionFromUrl || sectionFromUrl === section) return;
-
-    const ref = sectionsList.find((s) => s.id === sectionFromUrl)?.ref;
-
-    if (ref?.current) {
-      ref.current.scrollIntoView({ block: 'start' });
-      setSection(sectionFromUrl);
-    }
-    // только при открытии страницы
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return { section, navigate };
 };
