@@ -5,4 +5,5 @@ export const NavigationTabs: { name: string; id: Section }[] = [
   { name: 'Skills', id: Section.SKILLS },
   { name: 'Experience', id: Section.EXPERIENCE },
   { name: 'Education', id: Section.EDUCATION },
+  { name: 'Projects', id: Section.PROJECTS },
 ];

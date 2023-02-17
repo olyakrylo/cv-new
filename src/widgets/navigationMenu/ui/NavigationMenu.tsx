@@ -40,6 +40,7 @@ export const NavigationMenu: FC<NavigationMenuProps> = ({
           [styles.Menu_tab_skills]: currentSection === Section.SKILLS,
           [styles.Menu_tab_experience]: currentSection === Section.EXPERIENCE,
           [styles.Menu_tab_education]: currentSection === Section.EDUCATION,
+          [styles.Menu_tab_projects]: currentSection === Section.PROJECTS,
         })}
       >
         {NavigationTabs.map((tab) => (
@@ -53,12 +54,12 @@ export const NavigationMenu: FC<NavigationMenuProps> = ({
             {tab.name}
           </button>
         ))}
+      </div>
 
-        <div className={styles.Controls}>
-          <button className={styles.ThemeSwitcher} onClick={toggleTheme} />
+      <div className={styles.Controls}>
+        <button className={styles.ThemeSwitcher} onClick={toggleTheme} />
 
-          <div className={styles.Burger} onClick={toggleMenu} />
-        </div>
+        <div className={styles.Burger} onClick={toggleMenu} />
       </div>
 
       <div className={styles.Contacts}>

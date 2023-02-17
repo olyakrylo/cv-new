@@ -4,6 +4,7 @@ export type CVData = {
   experience: CVDataOrganization[];
   education: CVDataOrganization[];
   skills: CVDataSkillsCategory[];
+  projects: CVDataOrganization[];
 };
 
 export type CVDataContactType =
@@ -32,6 +33,10 @@ export type CVDataOrganization = {
   endDate?: string;
   description: string[];
   tags: string[];
+  links?: {
+    title: string;
+    href: string;
+  }[];
 };
 
 export type CVDataSkillsCategory = {

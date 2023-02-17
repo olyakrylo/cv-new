@@ -12,7 +12,7 @@ export default function Document() {
           crossOrigin=""
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;700;800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;700;800&display=swap"
           rel="stylesheet"
         />
         <link rel="preload" href="bg_1000_orig.webp" as="image" />

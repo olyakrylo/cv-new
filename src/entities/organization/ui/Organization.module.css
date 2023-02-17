@@ -7,11 +7,23 @@
 
 .Heading {
   all: unset;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  column-gap: 16px;
   padding: 16px 0;
-  box-shadow: 0 -4px 0 0 var(--color-primary) inset;
+}
+
+.Heading::after {
+  position: absolute;
+  content: '';
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+
+  background-color: var(--color-primary);
 }
 
 .Heading[aria-disabled='false'] {
@@ -24,12 +36,12 @@
   gap: 24px;
 
   font-weight: var(--font-weight-extra-bold);
-  font-size: var(--font-size-l);
+  font-size: var(--font-size-m);
 }
 
 .Arrow {
-  width: 16px;
-  height: 16px;
+  min-width: 16px;
+  min-height: 16px;
   transform: rotate(-90deg);
 
   transition: transform 0.2s ease-in-out;
@@ -53,6 +65,10 @@
   font-size: var(--font-size-s);
 }
 
+.Date {
+  white-space: nowrap;
+}
+
 .Content {
   position: relative;
   display: flex;
@@ -66,15 +82,60 @@
   font-size: var(--font-size-s);
 }
 
-.Tags {
+.Tags,
+.Links {
   display: flex;
   flex-wrap: wrap;
   gap: 8px 24px;
 
   padding: 4px 0;
 
-  font-weight: var(--font-weight-bold);
   font-size: var(--font-size-s);
+  font-weight: var(--font-weight-bold);
+}
+
+.Link::after {
+  width: 16px;
+  height: 16px;
+}
+
+@media screen and (min-width: 601px) {
+  .Container_left {
+    padding-right: 50%;
+  }
+
+  .Container_right {
+    padding-left: 50%;
+  }
+
+  .Container_right .Heading {
+    flex-direction: row-reverse;
+  }
+
+  .Container_right .Title {
+    flex-direction: row-reverse;
+  }
+
+  .Container_right .Title p {
+    text-align: right;
+  }
+
+  .Container_right .Arrow {
+    transform: rotate(90deg);
+  }
+
+  .Container_right[aria-expanded='false'] .Heading:hover .Arrow {
+    transform: translateX(-8px) rotate(90deg);
+  }
+
+  .Container_right .Description {
+    text-align: right;
+  }
+
+  .Container_right .Tags,
+  .Container_right .Links {
+    flex-direction: row-reverse;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -82,6 +143,9 @@
     flex-direction: column-reverse;
     align-items: flex-start;
     gap: 10px;
-    box-shadow: 0 -3px 0 0 var(--color-primary) inset;
+  }
+
+  .Heading::after {
+    height: 3px;
   }
 }

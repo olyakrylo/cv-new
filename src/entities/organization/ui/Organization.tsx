@@ -1,5 +1,8 @@
-import { FC, useCallback, useState } from 'react';
+import { FC, useCallback, useMemo, useState } from 'react';
 import useCollapse from 'react-collapsed';
+import cn from 'classnames';
+
+import { ExternalLink } from '@/shared/externalLink';
 
 import { WorkplaceProps } from '../type';
 
@@ -12,7 +15,10 @@ export const Organization: FC<WorkplaceProps> = ({
   endDate,
   description,
   tags,
+  links,
   disabled = false,
+  left = false,
+  right = false,
 }) => {
   const [expanded, setExpanded] = useState(defaultExpanded);
 
@@ -26,8 +32,26 @@ export const Organization: FC<WorkplaceProps> = ({
     setExpanded(!expanded);
   }, [disabled, expanded]);
 
+  const dates = useMemo(() => {
+    if (startDate === endDate) {
+      return <span className={styles.Date}>{startDate}</span>;
+    }
+    return (
+      <>
+        <span className={styles.Date}>{startDate}</span> -{' '}
+        <span className={styles.Date}>{endDate ?? 'Present'}</span>
+      </>
+    );
+  }, [startDate, endDate]);
+
   return (
-    <div className={styles.Container} aria-expanded={expanded}>
+    <div
+      className={cn(styles.Container, {
+        [styles.Container_left]: left,
+        [styles.Container_right]: right,
+      })}
+      aria-expanded={expanded}
+    >
       <button
         className={styles.Heading}
         aria-disabled={disabled}
@@ -39,9 +63,7 @@ export const Organization: FC<WorkplaceProps> = ({
           {!disabled && <div className={styles.Arrow} />}
           <p>{name}</p>
         </div>
-        <div className={styles.Dates}>
-          {startDate} - {endDate ?? 'Present'}
-        </div>
+        <div className={styles.Dates}>{dates}</div>
       </button>
 
       <section {...getCollapseProps()}>
@@ -51,6 +73,19 @@ export const Organization: FC<WorkplaceProps> = ({
               {text}
             </p>
           ))}
+
+          {Boolean(links) && (
+            <div className={styles.Links}>
+              {links?.map(({ title, href }, i) => (
+                <ExternalLink
+                  title={title}
+                  href={href}
+                  key={i}
+                  className={styles.Link}
+                />
+              ))}
+            </div>
+          )}
 
           <div className={styles.Tags}>
             {tags.map((tag, i) => (

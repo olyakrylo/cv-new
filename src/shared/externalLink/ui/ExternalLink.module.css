@@ -1,0 +1,27 @@
+.Container {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+
+  color: var(--color-primary);
+  opacity: 0.8;
+}
+
+.Container:hover {
+  opacity: 1;
+}
+
+.Container::after {
+  position: relative;
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+
+  background-color: var(--color-primary);
+  mask-image: url("/icons/linking.svg");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+}

@@ -3,6 +3,7 @@ import cn from 'classnames';
 
 import { ContactsProps } from '@/entities/contacts/type';
 import { CVData } from '@/shared/cvData';
+import { ExternalLink } from '@/shared/externalLink';
 
 import styles from './Contacts.module.css';
 
@@ -11,9 +12,15 @@ export const Contacts: FC<ContactsProps> = ({ contacts, className }) => {
     (contact: CVData['contacts'][number]) => {
       if (contact.link) {
         return (
-          <a target="_blank" href={contact.link} rel="noreferrer">
-            {contact.text}
-          </a>
+          <ExternalLink title={contact.text} href={contact.link} />
+          // <a
+          //   target="_blank"
+          //   className={styles.Link}
+          //   href={contact.link}
+          //   rel="noreferrer"
+          // >
+          //   {contact.text}
+          // </a>
         );
       }
       return <span>{contact.text}</span>;

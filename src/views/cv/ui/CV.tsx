@@ -13,6 +13,7 @@ import { About } from '@/widgets/about';
 import { Education } from '@/widgets/education';
 import { Experience } from '@/widgets/experience';
 import { NavigationMenu } from '@/widgets/navigationMenu';
+import { Projects } from '@/widgets/projects';
 import { Skills } from '@/widgets/skills';
 
 import { CVViewProps } from '../type';
@@ -24,6 +25,7 @@ export const CV: FC<CVViewProps> = (data) => {
   const experienceRef = useRef<HTMLDivElement>(null);
   const skillsRef = useRef<HTMLDivElement>(null);
   const educationRef = useRef<HTMLDivElement>(null);
+  const projectsRef = useRef<HTMLDivElement>(null);
 
   const { theme, toggleTheme } = useTheme();
 
@@ -33,6 +35,7 @@ export const CV: FC<CVViewProps> = (data) => {
       { id: Section.EXPERIENCE, ref: experienceRef },
       { id: Section.SKILLS, ref: skillsRef },
       { id: Section.EDUCATION, ref: educationRef },
+      { id: Section.PROJECTS, ref: projectsRef },
     ],
   });
 
@@ -70,6 +73,14 @@ export const CV: FC<CVViewProps> = (data) => {
                 className={styles.Section}
               >
                 <Education organizations={data.education} />
+              </SectionLayout>
+
+              <SectionLayout
+                contentRef={projectsRef}
+                title="Projects"
+                className={styles.Section}
+              >
+                <Projects projects={data.projects} />
               </SectionLayout>
             </div>
           </div>
