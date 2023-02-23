@@ -10,7 +10,7 @@
   content: '';
   position: absolute;
   top: 135px;
-  left: 500px;
+  left: 388px;
   right: 64px;
   bottom: 64px;
   z-index: -1;
@@ -32,7 +32,7 @@
 
   .Container::before {
     top: 106px;
-    left: 148px;
+    left: 48px;
     right: 48px;
     bottom: 48px;
     border-width: 12px;

@@ -4,7 +4,6 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <title>Olga Krylova</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -15,7 +14,7 @@ export default function Document() {
           href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;700;800&display=swap"
           rel="stylesheet"
         />
-        <link rel="preload" href="bg_1000_orig.webp" as="image" />
+        <link rel="preload" href="/img/bg_1000_orig.webp" as="image" />
       </Head>
       <body>
         <Main />

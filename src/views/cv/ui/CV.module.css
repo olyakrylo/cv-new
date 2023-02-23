@@ -14,11 +14,11 @@
 }
 
 .Container::before {
-  background-image: url("/bg_1000_orig.webp");
+  background-image: url("/img/bg_1000_orig.webp");
 }
 
 .Content::before {
-  background-image: url("/bg_orig.webp");
+  background-image: url("/img/bg_orig.webp");
 }
 
 .Content::after {
@@ -39,8 +39,23 @@
 }
 
 .SectionList {
-  background: var(--color-bg-05);
+  background: linear-gradient(110deg, var(--color-bg-03) 40%, var(--color-bg-08) 60%, var(--color-bg-03) 100%);
+  background-size: 600%;
   backdrop-filter: blur(20px);
+
+  animation: gradient 10s ease-in-out infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
 }
 
 .Section {
