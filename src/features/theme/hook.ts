@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { LS_THEME_KEY } from './contants';
-import { inverse, Theme } from './type';
+import { inverse, LS_THEME_KEY, metaThemeColor } from './contants';
+import { Theme } from './type';
 
 export const useTheme = () => {
   const [theme, setTheme] = useState<Theme>(Theme.LIGHT);
@@ -30,6 +30,11 @@ export const useTheme = () => {
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
+
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    if (themeMeta) {
+      themeMeta.setAttribute('content', metaThemeColor[theme]);
+    }
   }, [theme]);
 
   return {

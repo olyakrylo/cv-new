@@ -13,8 +13,6 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#3A3A3A",
-  "background_color": "#FAF0E6",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait"

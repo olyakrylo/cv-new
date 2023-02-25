@@ -26,7 +26,7 @@ export default function Document() {
         />
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="theme-color" content="#3a3a3a" />
+        <meta name="theme-color" content="#FAF0E6" />
 
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
