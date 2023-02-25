@@ -27,8 +27,25 @@
 .Title {
   font-size: var(--font-size-xxl);
   align-self: flex-end;
+  animation: move 10s ease-in-out infinite;
 
   font-weight: var(--font-weight-extra-bold);
+
+  width: max-content;
+}
+
+@keyframes move {
+  0% {
+   transform: translateY(-16px);
+  }
+
+  50% {
+    transform: translateY(16px);
+  }
+
+  100% {
+    transform: translateY(-16px);
+  }
 }
 
 @media screen and (max-width: 1024px) {
@@ -43,6 +60,20 @@
     left: 48px;
     right: 48px;
     bottom: 48px;
+  }
+
+  @keyframes move {
+    0% {
+      transform: translateY(-12px);
+    }
+
+    50% {
+      transform: translateY(12px);
+    }
+
+    100% {
+      transform: translateY(-12px);
+    }
   }
 }
 
@@ -61,5 +92,19 @@
 
   .Title {
     align-self: center;
+  }
+
+  @keyframes move {
+    0% {
+      transform: translateY(-8px);
+    }
+
+    50% {
+      transform: translateY(8px);
+    }
+
+    100% {
+      transform: translateY(-8px);
+    }
   }
 }
