@@ -104,6 +104,10 @@
     padding-right: calc(50% + 12px);
   }
 
+  .Container_left .Dates {
+    text-align: right;
+  }
+
   .Container_right {
     padding-left: calc(50% + 12px);
   }

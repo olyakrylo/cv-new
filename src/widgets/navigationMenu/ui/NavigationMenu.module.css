@@ -171,6 +171,7 @@
   .Container {
     padding: 8px 16px;
     flex-direction: column;
+    row-gap: 12px;
 
     transition: transform 0.2s ease-in-out;
 
