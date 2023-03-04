@@ -39,8 +39,8 @@
 }
 
 .SectionList {
-  background: linear-gradient(110deg, var(--color-bg-03) 40%, var(--color-bg-08) 60%, var(--color-bg-03) 100%);
-  background-size: 600%;
+  background: linear-gradient(100deg, var(--color-bg-03) 40%, var(--color-bg-08) 50%, var(--color-bg-03) 100%);
+  background-size: 400% 100%;
   backdrop-filter: blur(20px);
 
   animation: gradient 10s ease-in-out infinite;
