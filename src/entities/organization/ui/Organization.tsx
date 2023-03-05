@@ -3,6 +3,7 @@ import useCollapse from 'react-collapsed';
 import cn from 'classnames';
 
 import { ExternalLink } from '@/shared/externalLink';
+import { Markdown } from '@/shared/markdown';
 
 import { WorkplaceProps } from '../type';
 
@@ -69,9 +70,9 @@ export const Organization: FC<WorkplaceProps> = ({
       <section {...getCollapseProps()}>
         <div className={styles.Content}>
           {description.map((text, i) => (
-            <p className={styles.Description} key={i}>
-              {text}
-            </p>
+            <div key={i}>
+              <Markdown className={styles.Description}>{text}</Markdown>
+            </div>
           ))}
 
           {Boolean(links) && (

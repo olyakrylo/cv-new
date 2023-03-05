@@ -1,0 +1,40 @@
+.Container a {
+  border-bottom: 1px solid var(--color-primary-05);
+}
+
+.Container a:hover {
+  opacity: 0.7;
+}
+
+.Container ul {
+  display: grid;
+  grid-gap: 8px;
+}
+
+.Container ul li {
+  list-style: none;
+  position: relative;
+  padding-left: 12px;
+}
+
+.Container ul li::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+
+  background-color: var(--color-primary);
+  
+  content: '';
+}
+
+@media screen and (max-width: 600px) {
+  .Container ul li {
+    padding-left: 8px;
+  }
+
+  .Container ul li::before {
+    width: 3px;
+  }
+}

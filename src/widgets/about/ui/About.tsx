@@ -2,6 +2,7 @@ import { FC } from 'react';
 import cn from 'classnames';
 
 import { useStartTransition } from '@/features/startTransition';
+import { Markdown } from '@/shared/markdown';
 import { AboutProps } from '@/widgets/about/type';
 
 import styles from './About.module.css';
@@ -27,7 +28,9 @@ export const About: FC<AboutProps> = ({
         <h2 className={styles.Profession}>{profession}</h2>
       </div>
 
-      <div className={cn(styles.Text, [bottomTransition])}>{text}</div>
+      <div className={cn(styles.Text, [bottomTransition])}>
+        <Markdown>{text}</Markdown>
+      </div>
     </div>
   );
 };
