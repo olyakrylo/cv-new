@@ -1,8 +1,8 @@
-import { FC, useCallback, useContext, useState } from 'react';
+import { FC, useCallback, useContext, useMemo, useState } from 'react';
 import cn from 'classnames';
 
 import { Contacts } from '@/entities/contacts';
-import { NavigationContext, Section } from '@/features/navigation';
+import { NavigationContext } from '@/features/navigation';
 import { useStartTransition } from '@/features/startTransition';
 import { ThemeContext } from '@/features/theme';
 
@@ -29,20 +29,17 @@ export const NavigationMenu: FC<NavigationMenuProps> = ({
     setExpanded(!expanded);
   }, [expanded]);
 
+  const currentSectionModifier = useMemo(() => {
+    const index = NavigationTabs.findIndex(({ id }) => id === currentSection);
+    return `Menu_tab_${index + 1}`;
+  }, [currentSection]);
+
   return (
     <div
       className={cn(styles.Container, [className, startTransitionCN])}
       aria-expanded={expanded}
     >
-      <div
-        className={cn(styles.Menu, {
-          [styles.Menu_tab_about]: currentSection === Section.ABOUT,
-          [styles.Menu_tab_skills]: currentSection === Section.SKILLS,
-          [styles.Menu_tab_experience]: currentSection === Section.EXPERIENCE,
-          [styles.Menu_tab_education]: currentSection === Section.EDUCATION,
-          [styles.Menu_tab_projects]: currentSection === Section.PROJECTS,
-        })}
-      >
+      <div className={cn(styles.Menu, [styles[currentSectionModifier]])}>
         {NavigationTabs.map((tab) => (
           <button
             className={cn(styles.Tab, {

@@ -7,13 +7,15 @@
 
   color: var(--color-primary);
   opacity: 0.8;
+
+  transition: opacity 0.2s ease-in-out;
 }
 
 .Container:hover {
   opacity: 1;
 }
 
-.Container::after {
+.Container:not(.Container_internal)::after {
   position: relative;
   content: '';
   display: inline-block;

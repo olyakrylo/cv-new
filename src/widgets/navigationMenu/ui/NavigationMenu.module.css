@@ -46,19 +46,19 @@
   transition: transform 0.2s;
 }
 
-.Menu_tab_about::after {
+.Menu_tab_1::after {
   transform: translateY(calc(var(--tab-height) - var(--border-width)));
 }
-.Menu_tab_skills::after {
+.Menu_tab_2::after {
   transform: translateY(calc(var(--tab-height) * 2 + var(--menu-gap) - var(--border-width)));
 }
-.Menu_tab_experience::after {
+.Menu_tab_3::after {
   transform: translateY(calc(var(--tab-height) * 3 + var(--menu-gap) * 2 - var(--border-width)));
 }
-.Menu_tab_education::after {
+.Menu_tab_4::after {
   transform: translateY(calc(var(--tab-height) * 4 + var(--menu-gap) * 3 - var(--border-width)));
 }
-.Menu_tab_projects::after {
+.Menu_tab_5::after {
   transform: translateY(calc(var(--tab-height) * 5 + var(--menu-gap) * 4 - var(--border-width)));
 }
 
@@ -150,19 +150,19 @@
     transform: translateY(0);
   }
 
-  .Menu_tab_about::after {
+  .Menu_tab_1::after {
     transform: translateX(0);
   }
-  .Menu_tab_skills::after {
+  .Menu_tab_2::after {
     transform: translateX(calc(var(--tab-width) + var(--menu-gap)));
   }
-  .Menu_tab_experience::after {
+  .Menu_tab_3::after {
     transform: translateX(calc((var(--tab-width) + var(--menu-gap)) * 2));
   }
-  .Menu_tab_education::after {
+  .Menu_tab_4::after {
     transform: translateX(calc((var(--tab-width) + var(--menu-gap)) * 3));
   }
-  .Menu_tab_projects::after {
+  .Menu_tab_5::after {
     transform: translateX(calc((var(--tab-width) + var(--menu-gap)) * 4));
   }
 }

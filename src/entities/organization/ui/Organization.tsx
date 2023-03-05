@@ -2,7 +2,7 @@ import { FC, useCallback, useMemo, useState } from 'react';
 import useCollapse from 'react-collapsed';
 import cn from 'classnames';
 
-import { ExternalLink } from '@/shared/externalLink';
+import { Link } from '@/shared/link';
 import { Markdown } from '@/shared/markdown';
 
 import { WorkplaceProps } from '../type';
@@ -78,12 +78,9 @@ export const Organization: FC<WorkplaceProps> = ({
           {Boolean(links) && (
             <div className={styles.Links}>
               {links?.map(({ title, href }, i) => (
-                <ExternalLink
-                  title={title}
-                  href={href}
-                  key={i}
-                  className={styles.Link}
-                />
+                <Link href={href} key={i} className={styles.Link}>
+                  {title}
+                </Link>
               ))}
             </div>
           )}
