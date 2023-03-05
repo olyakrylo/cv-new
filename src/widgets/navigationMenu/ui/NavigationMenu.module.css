@@ -162,7 +162,7 @@
   .Menu_tab_education::after {
     transform: translateX(calc((var(--tab-width) + var(--menu-gap)) * 3));
   }
-  .Menu_tab_education::after {
+  .Menu_tab_projects::after {
     transform: translateX(calc((var(--tab-width) + var(--menu-gap)) * 4));
   }
 }
