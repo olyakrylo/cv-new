@@ -41,8 +41,8 @@
 
 @media screen and (max-width: 600px) {
   :root {
-    --font-size-xxl: 48px;
-    --font-size-xl: 24px;
+    --font-size-xxl: 40px;
+    --font-size-xl: 20px;
   }
 }
 
